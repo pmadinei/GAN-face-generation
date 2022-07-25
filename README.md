@@ -168,3 +168,5 @@ As we can see, there are some drawbacks to the model:
 - Model size; larger models have the opportunity to learn more features in a data feature space. Sadly, the majority of the face pictures don't contain the chin, so I couldn't evaluate the effect that the chin has on the complete face. The model is a fair size, but the output face photo is just 32 by 32 pixels. The photos have an extremely poor resolution, which makes it difficult to add additional CNN layers to the model.
 
 - Optimization strategy; optimizers and number of epochs affect your final result. First, I began with 15 epoch, but as I examined losses, it became clear that it would be beneficial to do early stopping at approximately 10 epoch in order to save as much time as possible during training.
+
+#### Good Luck!
