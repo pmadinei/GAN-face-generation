@@ -117,6 +117,10 @@ class Generator(nn.Module):
 * Batch size = 128
 * Image size = 32
 * Number of epochs = 25
+* Learning rate = 0.0002
+* D and G optimizer = Adam
+* beta_1 = 0.5
+* beta_2 = 0.999
 
 
 ## Weight Initialization
@@ -147,4 +151,20 @@ def weights_init_normal(m):
         nn.init.constant(m.bias.data, 0.0)
 ```
 
+## Training
+
+Training will involve alternating between training the discriminator and the generator. We'll use functions real_loss and fake_loss to help us calculate the discriminator losses. We can see the training loss plot hereunder. ![image](https://user-images.githubusercontent.com/45627032/180866700-885f41cb-e383-4071-910b-be5ca6ad14ed.png)
+
 ## Results
+
+Let's view some samples of images from the generator. ![image](https://user-images.githubusercontent.com/45627032/180866929-f5b907f7-7b89-4f18-9b9a-ce7ab30bf5f3.png)
+
+## Flaws - Solutions
+
+As we can see, there are some drawbacks to the model:
+
+- The dataset is biased; it is made of "celebrity" faces that are mostly white. In order to solve this problem, to this, the biased dataset makes it more difficult for the network to innovate. The majority of the faces are white, and the majority of them adhere to celebrity’s ideals of beauty, which often do not represent how real people really appear. In addition, the created faces have an appearance of having a mixture of one or two different skin tones. Therefore, if we were to group the dataset according to skin color. It would seem that hair has a significant influence on the face; thus, we should also take it into consideration while classifying face datasets.
+
+- Model size; larger models have the opportunity to learn more features in a data feature space. Sadly, the majority of the face pictures don't contain the chin, so I couldn't evaluate the effect that the chin has on the complete face. The model is a fair size, but the output face photo is just 32 by 32 pixels. The photos have an extremely poor resolution, which makes it difficult to add additional CNN layers to the model.
+
+- Optimization strategy; optimizers and number of epochs affect your final result. First, I began with 15 epoch, but as I examined losses, it became clear that it would be beneficial to do early stopping at approximately 10 epoch in order to save as much time as possible during training.
