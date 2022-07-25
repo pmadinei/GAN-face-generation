@@ -109,6 +109,16 @@ class Generator(nn.Module):
         return x
 ```
 
+### Key hyperparameters:
+
+* Discriminator conv dimention = 32
+* Generator conv dimention = 32
+* Z size = 100
+* Batch size = 128
+* Image size = 32
+* Number of epochs = 25
+
+
 ## Weight Initialization
 
 To help your models converge, we should initialize the weights of the convolutional and linear layers in the model. From reading the [original DCGAN paper](https://arxiv.org/pdf/1511.06434.pdf), they say:
