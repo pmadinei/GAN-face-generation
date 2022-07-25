@@ -153,7 +153,9 @@ def weights_init_normal(m):
 
 ## Training
 
-Training will involve alternating between training the discriminator and the generator. We'll use functions real_loss and fake_loss to help us calculate the discriminator losses. We can see the training loss plot hereunder. ![image](https://user-images.githubusercontent.com/45627032/180866700-885f41cb-e383-4071-910b-be5ca6ad14ed.png)
+Training will involve alternating between training the discriminator and the generator. We'll use functions real_loss and fake_loss to help us calculate the discriminator losses. We can see the training loss plot hereunder. 
+
+![image](https://user-images.githubusercontent.com/45627032/180866700-885f41cb-e383-4071-910b-be5ca6ad14ed.png)
 
 ## Results
 
