@@ -36,7 +36,6 @@ class Discriminator(nn.Module):
         """
         super(Discriminator, self).__init__()
         
-        # complete init function
         self.conv_dim = conv_dim
         self.conv1 = conv(3, conv_dim, batch_norm=False)
         self.conv2 = conv(conv_dim, conv_dim*2)
@@ -50,7 +49,7 @@ class Discriminator(nn.Module):
         :param x: The input to the neural network     
         :return: Discriminator logits; the output of the neural network
         """
-        # define feedforward behavior
+        
         x = F.leaky_relu(self.conv1(x), 0.2)
         x = F.leaky_relu(self.conv2(x), 0.2)
         x = F.leaky_relu(self.conv3(x), 0.2)
@@ -84,7 +83,6 @@ class Generator(nn.Module):
         """
         super(Generator, self).__init__()
 
-        # complete init function
         self.conv_dim = conv_dim
         self.fc = nn.Linear(z_size, conv_dim * 4 * 4 * 4)
         self.t_conv1 = deconv(conv_dim*4, conv_dim*2)
@@ -98,7 +96,7 @@ class Generator(nn.Module):
         :param x: The input to the neural network     
         :return: A 32x32x3 Tensor image as output
         """
-        # define feedforward behavior
+        
         x = self.fc(x)
         x = x.view(-1, self.conv_dim*4, 4, 4)
         x = F.relu(self.t_conv1(x))
