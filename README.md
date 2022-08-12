@@ -141,7 +141,6 @@ def weights_init_normal(m):
     # `Conv`, `BatchNorm2d`, `Linear`, etc.
     classname = m.__class__.__name__
     
-    # TODO: Apply initial weights to convolutional and linear layers
     if (hasattr(m, 'weight')) and ((classname.find('Conv') != -1) or (classname.find('Linear') != -1)):
         nn.init.normal(m.weight.data, 0.0, 0.2)
         
